@@ -1,42 +1,30 @@
 FIPS Version Pin
-=================
+================
 
-Pinned version: v0.2.0
+Pinned version: v0.4.0 (updated from v0.2.0)
 Tag author:     Johnathan Corgan <johnathan@corganlabs.com> (upstream maintainer)
-Tag date:       2026-03-22
-Pinned commit:  8151cc8d08fc98ffc17671b5a49a4d76ce504292
+Tag date:       2026-06-27
+Pinned commit:  da2d0b74b05d7a2bafd67e05fcf7a6edf9afa5d7
 Upstream repo:  github.com/jmcorgan/fips
 
 Policy
 ------
 - DO NOT track master — upstream is actively refactoring toward sans-io
   architecture. Master may break the features we depend on.
-- The v0.2.0 tag is the LAST STABLE RELEASE from upstream before the
-  refactor. It is proven and working.
-- Our local fork may include cherry-picked fixes on top of v0.2.0.
-  See "Local fork state" below.
+- v0.4.0 is the LATEST PRE-REFACTOR release from upstream. It is stable
+  and includes bugfixes over v0.2.0. v0.3.0+ introduced the Noise XX
+  handshake and version negotiation — v0.4.0 is the last release before
+  the sans-io rewrite.
+- Our local fork on ngit includes cherry-picked fixes on top.
 
 Local fork state (ngit)
 -----------------------
 Repo:  nostr://npub12m5exm2uk3xa674cc5r0hlyvccs5xxn7qv83ezuteefv5972nquq4j4szl/relay.ngit.dev/fips
 Local commit:   7a3f8c7ff3fb5d230a376cf1519b27f162fa442e
 Local branch:   feature/three-node-ota-antenna-validation
-Delta from tag: v0.2.0 + 2 commits (3-node OTA + cross-connection control fix)
-
-The VPS1 binary was built from the local fork (commit 7a3f8c7), not directly
-from the v0.2.0 tag. The extra commits are:
-  - 105c0f2 Fix simultaneous auto-connect cross-connection control traffic
-  - 8314b8d Add three-node OTA tooling and hardware debug ladder
-  - f6d01a7 tun: make fd00::/8 route addition non-fatal
-  - 7a3f8c7 Add llms.txt (LLM orientation map)
-
-Future builds should either:
-  A) Build from v0.2.0 tag for upstream compatibility
-  B) Build from the local fork at the pinned commit 7a3f8c7 for our fixes
+Delta from tag: v0.2.0 + 4 commits (needs rebase to v0.4.0)
 
 VPS1 deployment
 ---------------
-Binary: /usr/bin/fips (17.6MB, built 2026-07-05)
-Also:   /usr/bin/fipsctl, /usr/bin/fips-gateway, /usr/bin/fipstop
-Source: Built from local fork (commit 7a3f8c7)
-Config: /etc/fips/fips.yaml (managed by Ansible)
+Currently running v0.2.0-derivative binary at /usr/bin/fips (17.6MB).
+Next rebuild will use v0.4.0 tag from upstream.
