@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIPS Exit Node — Status</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; padding: 2rem; }
+    h1 { color: #58a6ff; margin-bottom: 1rem; }
+    h2 { color: #8b949e; margin: 1.5rem 0 0.5rem; }
+    .status { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 12px; font-weight: 600; font-size: 0.85rem; }
+    .status.on { background: #1b3a1b; color: #3fb950; }
+    .status.off { background: #3a1b1b; color: #f85149; }
+    .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.25rem; margin: 0.75rem 0; }
+    .grid { display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1rem; font-size: 0.9rem; }
+    .grid dt { color: #8b949e; }
+    .grid dd { color: #c9d1d9; }
+    .test { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0; }
+    .pass { color: #3fb950; }
+    .fail { color: #f85149; }
+    .skip { color: #d29922; }
+    footer { margin-top: 2rem; color: #484f58; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <h1>🛡️ FIPS Exit Node</h1>
+  <p>VPS1 · 66.92.204.38 · <a href="https://github.com/OpenTollGate/fips-exit-node" style="color:#58a6ff">GitHub</a></p>
+
+  <h2>Phase 1 Status</h2>
+  <div class="card">
+    <dl class="grid">
+      <dt>Exit Node</dt><dd><span class="status on">ONLINE</span></dd>
+      <dt>FIPS Daemon</dt><dd><span class="status on">ACTIVE</span></dd>
+      <dt>WireGuard wg0</dt><dd><span class="status on">UP</span></dd>
+      <dt>nftables MASQUERADE</dt><dd><span class="status on">LOADED</span></dd>
+      <dt>Nostr Route Advert</dt><dd><span class="status on">PUBLISHED</span></dd>
+      <dt>FIPS Version</dt><dd>0.3.0-dev (pinned at v0.2.0 ref)</dd>
+      <dt>External Addr</dt><dd>66.92.204.38:8443 (TCP)</dd>
+    </dl>
+  </div>
+
+  <h2>SMOKE-1 Tests</h2>
+  <div class="card">
+    <div class="test"><span class="pass">✅</span> WG handshake recent</div>
+    <div class="test"><span class="pass">✅</span> nftables MASQUERADE loaded</div>
+    <div class="test"><span class="pass">✅</span> IP forwarding enabled</div>
+    <div class="test"><span class="pass">✅</span> Kind 30078 route advert published</div>
+    <div class="test"><span class="pass">✅</span> Bidirectional WG traffic</div>
+  </div>
+
+  <h2>Architecture</h2>
+  <div class="card">
+    <pre style="font-size:0.8rem;color:#8b949e">
+FIPS Peer → UDP:2121 → VPS1 FIPS → fips0 → wg0 → nftables → 🌐
+    </pre>
+  </div>
+
+  <footer>
+    <p>Last updated: 2026-07-06</p>
+    <p>Hosted on <a href="https://nsite.lol" style="color:#58a6ff">nsite</a> via <a href="https://github.com/OpenTollGate" style="color:#58a6ff">OpenTollGate</a></p>
+  </footer>
+</body>
+</html>

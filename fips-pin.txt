@@ -1,0 +1,4 @@
+fips-pinned-version: v0.2.0
+fips-pinned-commit: 8151cc8d08fc98ffc17671b5a49a4d76ce504292
+fips-local-commit: 7a3f8c7ff3fb5d230a376cf1519b27f162fa442e
+fips-local-branch: feature/three-node-ota-antenna-validation
